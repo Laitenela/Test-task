@@ -142,10 +142,10 @@ footer > p {
 
 .newsBlock {
   max-width: 1520px;
-  margin: 0px auto 0px auto;
+  margin: 0px 0px 0px 200px;
   padding: 54.32px 0px 0px 0px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-flow: wrap;
   gap: 30px;
   row-gap: 82px;
