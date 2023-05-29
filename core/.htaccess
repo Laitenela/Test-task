@@ -1,0 +1,4 @@
+<FilesMatch ~ "\.(php|htm|html|js|ini)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

@@ -1,16 +1,16 @@
 <main>
     <p class='articleInfoTop'>
         Главная /
-        <a><?= $data['title'] ?></a>
+        <a><?= $title ?></a>
     </p>
     <section class='articleFull'>
-        <h1 class='mainWord articleName'><?= $data['title'] ?></h1>
-        <div class='date'><?= $data['date'] ?></div>
+        <h1 class='mainWord articleName'><?= $title ?></h1>
+        <div class='date'><?= $date ?></div>
         <div class='compose'>
-            <img class='sideArticleImg' src='public/images/<?= $data['image'] ?>'>
+            <img class='sideArticleImg' src='public/images/<?= $image ?>'>
             <div class='infoField'>
-                <h2 class='announce'><?= $data['announce'] ?></h2>
-                <?= $data['content'] ?>
+                <h2 class='announce'><?= $announce ?></h2>
+                <?= $content ?>
             </div>
         </div>
         <a onclick='redirectPrevPage()' class='back linkable'><img class='arrowBack' src='public/icons/Arrow.svg'>

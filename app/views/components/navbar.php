@@ -1,10 +1,10 @@
 <div class='nav'>
-    <?php if (!$navbar['isLast']) : ?>
+    <?php if ($isLast) : ?>
         <a href='listNews?page=<?= $data['page'] - 1 ?>' class='arrowNav linkable'>
             <img src='public/icons/ShortArrow.svg'>
         </a>
     <?php endif; ?>
-    <?php foreach ($navbar['pages'] as $nav) : ?>
+    <?php foreach ($navbar as $nav) : ?>
         <?php if ($nav[1]) : ?>
             <a href='listNews?page=<?= $nav[0] ?>' class='linkable'>
                 <div><?= $nav[0] ?></div>

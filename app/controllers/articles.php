@@ -1,12 +1,23 @@
 <?php
-class Controller_Articles extends Controller{
-    function __construct(){
-        $this->model = new Model_Articles();
-        $this->view = new View();
+class ControllerArticles
+{
+    private $soloArticle;
+    function __construct($id)
+    {
+        $this->soloArticle = new ModelArticles('article', $id);
     }
 
-    function info($id){
-        $data = $this->model->getArticleData($id);
-        $this->view->generate('template.php', 'articles.php', $data);
+    function info()
+    {
+        [
+            'title' => $title,
+            'date' => $date,
+            'image' => $image,
+            'announce' => $announce,
+            'content' => $content
+        ] = $this->soloArticle->getDatas();
+        
+        $content_view = 'articles.php';
+        include 'app/views/template.php';
     }
 }
