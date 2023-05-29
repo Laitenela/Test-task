@@ -7,6 +7,6 @@ class Controller_Articles extends Controller{
 
     function info($id){
         $data = $this->model->getArticleData($id);
-        $this->view->generate('articles.php', 'template.php', $data);
+        $this->view->generate('template.php', 'articles.php', $data);
     }
 }

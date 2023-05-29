@@ -1,17 +1,20 @@
 <?php
-class Model_Articles {
+class Model_Articles
+{
     private $db;
-    function __construct() {
-        $host="localhost";
+    function __construct()
+    {
+        $host = "localhost";
         $db = "news";
-        $user="root";
-        $pass="rootrootroot!";
+        $user = "root";
+        $pass = "rootrootroot!";
         $this->db = new MySQLi($host, $user, $pass, $db);
         $this->db->set_charset('utf8mb4');
     }
 
     //Передача данных для блока с 4 новостями
-    public function getPageData($page){
+    public function getPageData($page)
+    {
         $result = [];
 
         $responce = $this->db->query("
@@ -20,9 +23,9 @@ class Model_Articles {
         ORDER BY `date` DESC
         LIMIT 1;
         ");
-        array_push($result ,$responce->fetch_assoc());
+        array_push($result, $responce->fetch_assoc());
 
-        $start_id = ($page-1)*4;
+        $start_id = ($page - 1) * 4;
         $responce = $this->db->query("
         SELECT `id`, `date`, `title`, `announce`
         FROM news 
@@ -30,9 +33,9 @@ class Model_Articles {
         LIMIT $start_id, 5;
         ");
         while ($row = $responce->fetch_assoc()) {
-            array_push($result ,$row);
+            array_push($result, $row);
         }
-        if(count($result) === 6){
+        if (count($result) === 6) {
             array_pop($result);
             array_push($result, false);
         } else {
@@ -43,8 +46,10 @@ class Model_Articles {
     }
 
     //Передача данных для блока с одной новостью
-    public function getArticleData($id){
-        $result = $this->db->query("SELECT * FROM `news` WHERE id = '$id'");
-        return $result->fetch_assoc();
+    public function getArticleData($id)
+    {
+        $result = $this->db->query("SELECT * FROM `news` WHERE id = '$id'")->fetch_assoc();
+        $result['date'] = date('d.m.Y', strtotime($result['date']));
+        return $result;
     }
 }
