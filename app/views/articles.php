@@ -7,7 +7,7 @@
         <div class='date'><?= $date ?></div>
         <div class='article-container'>
             <img class='article-container__side-image' src='public/images/<?= $image ?>'>
-            <div class='info-field'>
+            <div class='article-container__info-field info-field'>
                 <h2 class='announce'><?= $announce ?></h2>
                 <?= $content ?>
             </div>
