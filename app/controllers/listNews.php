@@ -1,20 +1,18 @@
 <?php
-class ControllerListNews
+class Controller_ListNews extends Controller
 {
-    private $newsModel;
-    function __construct($page)
+    function touch($query)
     {
-        $this->newsModel = new ModelArticles('listNews', $page);
-    }
+        $this->middleware_check_query($query, 'page');
+        $page         = (int)explode('=', $query)[1];
 
-    function info()
-    {
-        [$page, $lastArticle, $isLast, $articles] = $this->newsModel->getDatas();
-        $navbar = ($page === 1) ? [[3, true], [2, true], [1, false]] : (!$isLast ?
-            [[$page, false], [$page - 1, true], [$page - 2, true]] :
-            [[$page + 1, true], [$page, false], [$page - 1, true]]);
+        include "app/models/articles.php";
+        $news_feed    = new Model_Articles();
+        $data         = $news_feed->get_feed($page, 4);
 
-        $content_view = 'listNews.php';
-        include 'app/views/template.php';
+        $this->middleware_check_exist($data['articles']);
+
+        $data['view'] = 'listnews.php';
+        $this->presentation($data);
     }
 }

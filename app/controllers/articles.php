@@ -1,23 +1,18 @@
 <?php
-class ControllerArticles
+class Controller_Articles extends Controller
 {
-    private $soloArticle;
-    function __construct($id)
+    function touch($query)
     {
-        $this->soloArticle = new ModelArticles('article', $id);
-    }
+        $this->middleware_check_query($query, 'id');
+        $id           = (int)explode('=', $query)[1];
 
-    function info()
-    {
-        [
-            'title' => $title,
-            'date' => $date,
-            'image' => $image,
-            'announce' => $announce,
-            'content' => $content
-        ] = $this->soloArticle->getDatas();
-        
-        $content_view = 'articles.php';
-        include 'app/views/template.php';
+        include "app/models/articles.php";
+        $news_feed    = new Model_Articles();
+        $data         = $news_feed->get_article($id);
+
+        $this->middleware_check_exist($data['id']);
+
+        $data['view'] = 'articles.php';
+        $this->presentation($data);
     }
 }

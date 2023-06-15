@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
+:root {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
 body {
   font-family: "Open Sans";
   font-style: normal;
@@ -44,21 +52,34 @@ a {
   color: var(--brand-color);
 }
 
+@media (max-width: 1525px) {
+  .feed-block{
+    justify-content: center !important; 
+  }
+  .feed__main-word {
+    margin: 54.32px auto 0px auto;
+    width: 739px;
+  }
+}
+
 /*ЛОГО*/
 
-header {
+.header {
   height: 156.88px;
   border-bottom: 1px solid var(--color1);
 }
 
-.logo {
+.header__logo {
   margin-left: var(--sideMargins);
   padding-top: 39.93px;
 }
 
-.logo > p {
+.header__logo > p {
   display: inline-block;
   padding: 0px 0px 0px 24.12px;
+}
+
+.logo > p {
   width: 273px;
   font-family: "Segoe UI";
   font-size: 28px;
@@ -74,13 +95,13 @@ header {
 
 /*FOOOTER*/
 
-footer {
+.footer {
   margin: 83px auto 0px auto;
   max-width: 1520px;
   border-top: 1px solid var(--color1);
 }
 
-footer > p {
+.footer > p {
   margin-top: 63.59px;
   margin-bottom: 84.41px;
   text-align: left;
@@ -99,7 +120,7 @@ footer > p {
   background-repeat: no-repeat;
   background-size: cover;
   image-rendering: pixelated;
-  transition: all var(--anination-time);
+  transition: filter var(--anination-time);
 }
 
 .ban-image > h1 {
@@ -119,8 +140,9 @@ footer > p {
 
 /* Сетка новостей */
 
-.mainWord {
-  margin: 54.32px var(--sideMargins) 0px var(--sideMargins);
+.feed__main-word {
+  margin: 54.32px auto 0px auto;
+  max-width: 1520px;
 }
 
 /*Дата*/
@@ -140,9 +162,9 @@ footer > p {
 
 /*Контентные блоки*/
 
-.newsBlock {
+.feed-block {
   max-width: 1520px;
-  margin: 0px 0px 0px 200px;
+  margin: 0px auto;
   padding: 54.32px 0px 0px 0px;
   display: flex;
   justify-content: left;
@@ -151,14 +173,14 @@ footer > p {
   row-gap: 82px;
 }
 
-.article {
+.news-block {
   margin: 0px;
   position: relative;
   width: 739px;
   height: 100%;
 }
 
-.article > h2 {
+.news-block > h2 {
   transition: all var(--anination-time);
   margin-top: 30px;
   font-style: normal;
@@ -168,13 +190,12 @@ footer > p {
   color: var(--body-text);
 }
 
-.article > p {
+.news-block > p {
   padding-bottom: 82px;
   color: var(--body-text);
 }
 
-a.back,
-.article > button {
+.button {
   margin-top: 30px;
   transition: all var(--anination-time);
   display: flex;
@@ -204,7 +225,7 @@ a.back,
   bottom: 0px;
 }
 
-.article > button > img {
+.news-block > button > img {
   transition: all var(--anination-time);
 }
 
@@ -222,7 +243,7 @@ a.back,
   gap: 16px;
 }
 
-.nav > .arrowNav {
+.nav > .arrow-nav {
   width: max-content;
   height: max-content;
   padding: 16px 41px;
@@ -250,29 +271,19 @@ a.back,
 /*////////////////*/
 
 /*СТРАНИЦА С КОНКРЕТНОЙ НОВОСТЬЮ*/
-/*Инфо о странице*/
-.articleInfoTop {
-  margin-top: 72.25px;
-  margin-left: var(--sideMargins);
-  margin-bottom: 21.86px;
-}
 
-.articleInfoTop > a {
-  color: var(--color1);
-}
-
-/*Новость*/
-
-.articleFull {
-  display: inline-block;
+.article {
   margin: 0px var(--sideMargins) 0px var(--sideMargins);
 }
 
-/*Заголовок новости*/
+/*Инфо о странице*/
+.article__info-top {
+  margin-top: 72.25px;
+  margin-bottom: 21.86px;
+}
 
-.articleName {
-  color: var(--body-text);
-  margin: 0px 0px 63px 0px;
+.article__info-top > a {
+  color: var(--color1);
 }
 
 /*Короткое описание новости*/
@@ -283,7 +294,7 @@ h2.announce {
 
 /*Блок с контентом новости*/
 
-.compose {
+.article-container {
   margin-top: 40px;
   display: flex;
   flex-wrap: nowrap;
@@ -291,32 +302,32 @@ h2.announce {
   gap: 40px;
 }
 
-.infoField > h2 {
+.info-field > h2 {
   margin-top: 0px;
   color: var(--brand-color);
 }
 
-.infoField > p {
+.info-field > p {
   margin-bottom: 22px;
 }
 
 /*Картинка с новости*/
 
-.sideArticleImg {
+.article-container__side-image {
   object-fit: contain;
   width: 740px;
 }
 
 /*Кнопка возвращения*/
 
-a.back {
+.total-article__button {
   position: relative;
   width: 283px;
   height: 54px;
   padding: 0px;
 }
 
-a.back > img {
+.arrow-back {
   transform: scale(-1, -1);
 }
 /*////////////////*/
@@ -339,19 +350,19 @@ a.back > img {
   filter: saturate(120%) brightness(90%);
 }
 
-.article:hover > h2 {
+.news-block:hover > h2 {
   color: var(--brand-color);
 }
 
 .linkable:hover,
-.article:hover > button {
+.news-block:hover > button {
   cursor: pointer;
   background: var(--brand-color);
   color: #ffffff;
 }
 
 .linkable:hover > img,
-.article:hover > button > img {
+.news-block:hover > button > img {
   filter: brightness(0) invert(1);
 }
 

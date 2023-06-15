@@ -1,6 +1,6 @@
 <div class='nav'>
-    <?php if ($isLast) : ?>
-        <a href='listNews?page=<?= $data['page'] - 1 ?>' class='arrowNav linkable'>
+    <?php if ($is_last_pg) : ?>
+        <a href='listNews?page=<?= $page + 1 ?>' class='arrow-nav linkable'>
             <img src='public/icons/ShortArrow.svg'>
         </a>
     <?php endif; ?>
